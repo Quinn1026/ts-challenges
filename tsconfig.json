@@ -1,0 +1,6 @@
+{
+	"compilerOptions": {
+    //不允许使用不明确指向的this
+    "noImplicitThis": true
+  }
+}
