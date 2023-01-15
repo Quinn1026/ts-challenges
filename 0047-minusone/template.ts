@@ -42,12 +42,12 @@ type _GetHeadAndLast<T extends string, Acc extends string = ''> = T extends `${i
 type GetHead<T extends string> = _GetHeadAndLast<T>[0]
 type GetLast<T extends string> = _GetHeadAndLast<T>[1]
 
-type ToNumber<T extends string> = T extends `${infer U extends number}` ? U : never
+type ToNum<T extends string> = T extends `${infer U extends number}` ? U : never
 
 type MinusOne<T extends number> = `${T}` extends infer _T extends string
   ? _T extends keyof MinusMap
     ? MinusMap[_T]
-    : ToNumber<
+    : ToNum<
         GetLast<_T> extends '0'
           ? `${GetHead<_T> extends '1' ? '' : MinusOne<GetHead<_T>>}9`
           : `${GetHead<_T>}${MinusMap[GetLast<_T>]}`
