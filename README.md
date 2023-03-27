@@ -36,6 +36,12 @@ type A2 = typeof arr2 // number[]
 // 若裸类型是联合类型，那么该条件类型就成为分布式条件类型，会进行分解
 ```
 
+```ts
+// 通过[keyof T & 'xxx']获取元组的keys
+type Tup = [11, 22 33]
+type TupKeys = Tup[keyof Tup & 'key'] // 1 | 2 | 3
+```
+
 
 
 #### 3. object相关
@@ -46,7 +52,14 @@ type K1 = keyof any // string | number | symbol
 type K2 = PropertyKey // 等价于 keyof any
 ```
 
+```ts
+// obj的联合类型
+// T[keyof T] 可以获取T的值的联合类型
+type O = { name: string, age: number }
+type V = O[keyof O] // string | number
+```
 
 
-#### 
+
+
 
